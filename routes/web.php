@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\PostController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -20,20 +18,14 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    $posts = Post::all();
-    return view('index',compact('posts'));
+    return view('index');
 });
 
 // Admin Routes
 Route::group(['middleware' => ['auth','role:Admin','verified']], function () {
     Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
-    // Post
-    Route::resource('posts', PostController::class)->only(
-        'index','create','store','edit','update','destroy'
-    );
-    // Users
-    Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-
+    
+    
 });
 
 // User Routes
@@ -52,6 +44,6 @@ Route::middleware('auth','verified')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::feeds();
+ 
 
 require __DIR__.'/auth.php';

@@ -11,15 +11,11 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "spatie/laravel-backup": "^8.6",
-        "spatie/laravel-feed": "^4.3",
-        "spatie/laravel-medialibrary": "^10.15",
-        "spatie/laravel-permission": "^6.3",
-        "spatie/laravel-sitemap": "^7.0",
-        "spatie/laravel-sluggable": "*"
+        "spatie/laravel-permission": "^6.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel/breeze": "^1.28",
+        "laravel/breeze": "^1.29.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",

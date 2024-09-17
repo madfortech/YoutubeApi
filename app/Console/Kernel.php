@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->weekly()->at('01:30');
         $schedule->command('backup:monitor')->daily()->at('03:00');
-        $schedule->command('sitemap:generate')->daily('13:00');
+       
         $schedule->call(function () {
             Artisan::call('view:clear');
             Artisan::call('route:clear');

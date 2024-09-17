@@ -19,9 +19,7 @@
                                     {{ __('Dashboard') }}
                                 </x-nav-link>
 
-                                <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts')">
-                                    {{ __('Add new post') }}
-                                </x-nav-link>
+                              
 
                                 @else
                                 <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('dashboard')">
@@ -38,9 +36,7 @@
                         @endauth
                     @endif
 
-                    <x-nav-link :href="('/')" :active="request()->routeIs('posts')">
-                        {{ __('Posts') }}
-                    </x-nav-link>
+                  
                 </div>
             </div>
 
@@ -113,11 +109,7 @@
                 </x-responsive-nav-link>
             </div>
         @endif
-
-        <x-responsive-nav-link :href="('/')" :active="request()->routeIs('posts')">
-            {{ __('Posts') }}
-        </x-responsive-nav-link>
-       
+ 
 
         <!-- Responsive Settings Options -->
         @auth
