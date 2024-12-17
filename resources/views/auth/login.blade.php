@@ -44,4 +44,10 @@
             </x-primary-button>
         </div>
     </form>
+
+    <div class="mt=3">
+        <x-nav-link :href="route('youtube.login')">
+            {{ __('Login with youtube') }}
+        </x-nav-link>
+    </div>
 </x-guest-layout>

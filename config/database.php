@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,11 +63,11 @@ return [
             ]) : [],
 
             'dump' => [
-                'dump_binary_path' => 'E:/xampp/mysql/bin', // only the path, so without `mysqldump` or `pg_dump`
+                'dump_binary_path' => 'E:\xampp\mysql\bin', // only the path, so without `mysqldump` or `pg_dump`
                 'use_single_transaction',
                 'timeout' => 60 * 5, // 5 minute timeout
-                'exclude_tables' => ['table1', 'table2'],
-                'add_extra_option' => '--optionname=optionvalue', // for example '--column-statistics=0'
+                // 'exclude_tables' => ['table1', 'table2'],
+                // 'add_extra_option' => '--optionname=optionvalue', // for example '--column-statistics=0'
             ]
         ],
 

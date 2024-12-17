@@ -20,6 +20,10 @@ class PermissionsDemoSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $role1 = Role::create(['name' => 'Admin']);
+        $role1 = Role::create(['name' => 'User']);
+        $role2 = Role::create(['name' => 'Manager']);
+        $role3 = Role::create(['name' => 'Writer']);
+
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
       
@@ -30,5 +34,26 @@ class PermissionsDemoSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
         $user->assignRole($role1);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'manager',
+            'email' => 'manager@example.com',
+            'password' => Hash::make('password')
+        ]);
+        $user->assignRole($role2);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Writer',
+            'email' => 'writer@example.com',
+            'password' => Hash::make('password')
+        ]);
+        $user->assignRole($role3);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'User',
+            'email' => 'user@example.com',
+            'password' => Hash::make('password')
+        ]);
+        $user->assignRole($role3);
     }
 }

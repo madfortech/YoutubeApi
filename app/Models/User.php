@@ -22,6 +22,9 @@ class User extends Authenticatable  implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'youtube_id',
+        'youtube_token',
+        'youtube_refresh_token',
     ];
 
     /**
@@ -43,4 +46,7 @@ class User extends Authenticatable  implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    
+
 }

@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -18,6 +20,47 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
         return view('auth.login');
+    }
+
+    /**
+     * Redirect the user to the Youtube authentication page.
+     *
+     * @return \Illuminate\Http\Response
+    */
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('youtube')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Youtube.
+     *
+     * @return \Illuminate\Http\Response
+    */
+    public function handleProviderCallback()
+    {
+        
+        try {
+            $youtubeUser = Socialite::driver('youtube')->user();
+
+            $user = User::where('email', $youtubeUser->getEmail())->first();
+
+            if (!$user) {
+                $user = User::create([
+                    'name' => $youtubeUser->getName(),
+                    'email' => $youtubeUser->getEmail(),
+                    'youtube_id' => $youtubeUser->getId(),
+                ]);
+            }
+
+            Auth::login($user);
+
+            return redirect()->intended(route('dashboard'));
+        } catch (\Throwable $th) {
+            return redirect()->route('login')->with('error', 'An error occurred while trying to login with YouTube.');
+        }  
+  
     }
 
     /**
