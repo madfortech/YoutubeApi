@@ -46,11 +46,18 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/login/youtube', [AuthenticatedSessionController::class, 'redirectToProvider'])->name('youtube.login');
-Route::get('/login/auth/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
+Route::get('/auth/youtube/call-back', [AuthenticatedSessionController::class, 'handleProviderCallback']);
 
 Route::get('/youtube/custom-search', [CustomSearch::class, 'index'])->name('custom-search');
 Route::post('/youtube/custom-search', [CustomSearch::class, 'store'])->name('youtube.store');
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
 
+Route::get('/terms-and-conditions', function () {
+    return view('terms-and-conditions');
+})->name('terms-and-conditions');
 
+ 
 require __DIR__.'/auth.php';

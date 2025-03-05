@@ -19,7 +19,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        //return view('auth.login');
+        abort(404);
     }
 
     /**
@@ -30,6 +31,7 @@ class AuthenticatedSessionController extends Controller
 
     public function redirectToProvider()
     {
+       
         return Socialite::driver('youtube')->redirect();
     }
 

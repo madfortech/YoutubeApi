@@ -33,9 +33,10 @@ class CustomSearch extends Controller
 
     public function index()
     {
-        $regions = $this->getSupportedRegions();
-         
-        return view('search',compact('regions'));
+        
+        return view('search', [
+            'videos' => []
+        ]);
     }
 
     /**
@@ -52,16 +53,10 @@ class CustomSearch extends Controller
         ]);
 
         $query = $request->input('query');
-        
-        $regions = $this->getSupportedRegions();
-
         $results = $this->performSearch($query);
 
         return view('search', [
-            'results' => $results,
-            'query' => $query,
-            'regions' => $regions,
-
+            'videos' => $results,
         ]);
  
     }
@@ -80,7 +75,7 @@ class CustomSearch extends Controller
                 'q' => $query,
                 'maxResults' => 10,
                 'type' => 'video',
-                'safeSearch' => 'strict',
+                'safeSearch' => 'none',
             ]);
              // Debugging statement
             return $searchResponse->getItems();
@@ -90,15 +85,6 @@ class CustomSearch extends Controller
         }
     }
 
-
-    // ** Region code **/
-
-    public function getSupportedRegions()
-    {
-        $response = $this->youtube->i18nRegions->listI18nRegions('snippet');
-        $regions = $response->getItems();
-
-        return $regions;
-    }
+ 
         
 }
