@@ -5,13 +5,15 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "google/apiclient": "2.18.1",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "^5.16",
         "laravel/tinker": "^2.8",
+        "livewire/flux": "^2.9",
+        "livewire/livewire": "^3.7",
         "socialiteproviders/youtube": "^4.1",
         "spatie/laravel-permission": "^6.3"
     },
@@ -22,8 +24,8 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8.1",
-        "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest": "^4.1.6",
+        "pestphp/pest-plugin-laravel": "^4.0.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
