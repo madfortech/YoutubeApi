@@ -1,10 +1,5 @@
 <section>
-    <header>
-        <h2 class="text-3xl font-medium text-gray-900">
-            {{ __('Login & security') }}
-      
-    </header>
-
+     
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
@@ -59,9 +54,5 @@
         </div>
     </form>
 
-    <div class="mt-4">
-        <x-nav-link :href="route('password.edit')">
-            {{ __('Edit password') }}
-        </x-nav-link>
-    </div>
+  
 </section>

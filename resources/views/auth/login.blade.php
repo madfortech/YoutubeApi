@@ -3,6 +3,9 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <flux:heading size="xl" class="mb-6 text-center">Login</flux:heading>
+
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -33,22 +36,30 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
+        </div>
 
-            <x-primary-button class="ms-3">
+        <div class="mt-4">
+            <x-primary-button>
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>
 
-    <div class="mt=3">
-        <x-nav-link :href="route('youtube.login')">
-            {{ __('Login with youtube') }}
-        </x-nav-link>
+    <div class="mt-6">
+    
+        <flux:button
+            class="w-full"
+            variant="primary" color="green"
+            :href="route('youtube.login')"
+            icon:trailing="arrow-up-right">
+              {{ __('Login with youtube') }}
+        </flux:button>
+
     </div>
 </x-guest-layout>

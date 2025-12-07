@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\User\CustomSearch;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -23,22 +22,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
-Route::middleware(['auth','role:Admin'])->group(function () {
-    Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.home');
-    
-});
 
 
 Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings');
 
-    Route::get('/settings', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -50,14 +45,6 @@ Route::get('/auth/youtube/call-back', [AuthenticatedSessionController::class, 'h
 
 Route::get('/youtube/custom-search', [CustomSearch::class, 'index'])->name('custom-search');
 Route::post('/youtube/custom-search', [CustomSearch::class, 'store'])->name('youtube.store');
-
-Route::get('/privacy-policy', function () {
-    return view('privacy-policy');
-})->name('privacy-policy');
-
-Route::get('/terms-and-conditions', function () {
-    return view('terms-and-conditions');
-})->name('terms-and-conditions');
 
  
 require __DIR__.'/auth.php';

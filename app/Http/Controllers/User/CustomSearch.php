@@ -34,7 +34,7 @@ class CustomSearch extends Controller
     public function index()
     {
         
-        return view('search', [
+        return view('welcome', [
             'videos' => []
         ]);
     }
@@ -55,7 +55,7 @@ class CustomSearch extends Controller
         $query = $request->input('query');
         $results = $this->performSearch($query);
 
-        return view('search', [
+        return view('welcome', [
             'videos' => $results,
         ]);
  
